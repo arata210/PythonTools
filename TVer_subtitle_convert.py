@@ -32,9 +32,9 @@ def Sub_text(vtt_text):
             break
         else:
             color = Sub_Color(new_text[7])
-            ass_text = ass_text + '\c&' + color + '&}' + new_text.split(">")[1]
+            ass_text = ass_text + '{\c&' + color + '&}' + new_text.split(">")[1]
 
-    return html2text.html2text(ass_text)
+    return ass_text
 
 
 def Sub_line(line_attr, line_text):
@@ -47,7 +47,7 @@ def Sub_line(line_attr, line_text):
     # 字体大小默认100, 如果需要更改请同步更改此处的+100
     width = int(float(line_attr.split()[3][5:-1]) * 10.8 + 100)
     pos = '\pos(' + str(length) + ',' + str(width) + ')'
-    ass_sub = "Dialogue: 0," + time_start + ',' + time_end + ',Default,,0,0,0,,' + '{' + pos + Sub_text(line_text)
+    ass_sub = "Dialogue: 0," + time_start + ',' + time_end + ',Default,,0,0,0,,' + '{' + pos + '}' + Sub_text(line_text)
 
     return ass_sub.strip('\n')
 
