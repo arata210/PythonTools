@@ -1,4 +1,4 @@
-import html2text
+import html
 
 
 def Sub_Color(c_fgc):
@@ -34,7 +34,7 @@ def Sub_text(vtt_text):
             color = Sub_Color(new_text[7])
             ass_text = ass_text + '{\c&' + color + '&}' + new_text.split(">")[1]
 
-    return ass_text
+    return html.unescape(ass_text)
 
 
 def Sub_line(line_attr, line_text):
@@ -68,7 +68,7 @@ PlayResY: 1080
 
 [V4+ Styles]
 Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
-Style: Default,Meiryo,100,&H00FFFFFF,&H000000FF,&H00000000,&H80000000,0,0,0,0,100,100,0,0,1,5,0,1,0,0,0,1
+Style: Default,Meiryo,100,&H00FFFFFF,&H000000FF,&H80000000,&H00000000,0,0,0,0,100,100,0,0,3,5,0,1,0,0,0,1
 
 [Events]
 Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
