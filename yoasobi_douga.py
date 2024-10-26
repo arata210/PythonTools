@@ -26,7 +26,7 @@ for x in data:
         json_data = json.loads(srt_value_cleaned)
 
         # 获取跳转链接url
-        url = json_data["destination_objects"]["browser_with_docked_media_1"]["data"]["url_data"]["url"]  # 获取第一个键
+        url = json_data["destination_objects"]["browser_with_docked_media_1"]["data"]["url_data"]["url"]
         # print(media_id)
         # 请求跳转链接获取标题并优化
         title = BeautifulSoup(requests.get(url.split('?')[0]).text, 'html.parser').title.string.split('|')[0].strip()
