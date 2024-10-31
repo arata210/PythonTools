@@ -7,7 +7,7 @@ from bs4 import BeautifulSoup
 
 
 def spotify_auth(url, sp_dc):
-    cookies = {'sp_dc': sp_dc}
+    cookies = {'sp_dc': sp_dc, }
     re = requests.get(url, cookies=cookies)
     soup = BeautifulSoup(re.text, 'html.parser')
 
@@ -16,18 +16,9 @@ def spotify_auth(url, sp_dc):
 
     # 提取accessToken
     access_token = None
-    for script in session:
-        try:
-            # 转换为字典
-            data = json.loads(script.string)
-            if 'accessToken' in data:
-                access_token = data['accessToken']
-                break
-        except (ValueError, TypeError):
-            continue
-
-    if access_token:
-        return access_token
+    data = json.loads(session.string)
+    if 'accessToken' in data:
+        return data['accessToken']
     else:
         return False
 
